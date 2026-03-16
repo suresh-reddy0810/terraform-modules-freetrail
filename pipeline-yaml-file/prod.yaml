@@ -1,19 +1,19 @@
 trigger:
-- main
- 
+- none
+
 pool:
   vmImage: ubuntu-latest
- 
+
 variables:
   serviceConnection: 'terraform_service_connection'
   workingDirectory: 'environments/prod'
- 
+
 steps:
- 
+
 - task: TerraformInstaller@1
   inputs:
     terraformVersion: '1.6.6'
- 
+
 - task: TerraformTaskV4@4
   displayName: Terraform Init
   inputs:
@@ -25,7 +25,7 @@ steps:
     backendAzureRmStorageAccountName: statefilebackupaccounts
     backendAzureRmContainerName: tfstate
     backendAzureRmKey: prod.tfstate
- 
+
 - task: TerraformTaskV4@4
   displayName: Terraform Plan
   inputs:
@@ -33,7 +33,8 @@ steps:
     command: plan
     workingDirectory: $(workingDirectory)
     environmentServiceNameAzureRM: $(serviceConnection)
- 
+    commandOptions: '-var-file=myvars.tfvars'
+
 - task: TerraformTaskV4@4
   displayName: Terraform Apply
   inputs:
@@ -41,3 +42,4 @@ steps:
     command: apply
     workingDirectory: $(workingDirectory)
     environmentServiceNameAzureRM: $(serviceConnection)
+    commandOptions: '-var-file=myvars.tfvars -auto-approve' 
