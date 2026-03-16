@@ -1,0 +1,57 @@
+module "rg" {
+    source = "../../modules/rg/"
+    rg_name = var.rg_name
+    location = var.location
+}
+
+module "vnet" {
+    source = "../../modules/vnet/"
+    vnet_name = var.vnet_name
+    vnet_cicdr = var.vnet_cicdr
+    sub1_name = var.sub1_name
+    sub1_cicdr = var.sub1_cicdr
+    sub2_name = var.sub2_name
+    sub2_cicdr = var.sub2_cicdr
+    nsg_name = var.nsg_name
+    rg_name = module.rg.rg_name
+    location = module.rg.location
+}
+
+module "vm" {
+    source = "../../modules/vm/"
+    vm_name = var.vm_name
+    nic_name = var.nic_name
+    sub1_id = module.vnet.sub1_id
+    rg_name = module.rg.rg_name
+    location = module.rg.location
+
+}
+
+module "storage" {
+    source = "../../modules/storage/"
+    storage_account_name = var.storage_account_name
+    rg_name = module.rg.rg_name
+    location = module.rg.location
+    sub2_private_id = module.vnet.sub2_private_id
+}
+
+module "webapp" {
+    source = "../../modules/webapp/"
+    app_service_name = var.app_service_name
+    service_plan_name = var.service_plan_name
+    rg_name = module.rg.rg_name
+    location = module.rg.location
+}
+
+module "aks" {
+    source = "../../modules/aks/"
+    aks_name = var.aks_name
+    sub1_name = module.vnet.sub1_name
+    rg_name = module.rg.rg_name
+    location = module.rg.location
+
+}
+
+
+
+
