@@ -18,7 +18,7 @@ sub_cicdr = ["10.1.1.0/24"]
 vm_name = "preprod-vm1"
 nic_name = "preprod_nic"
 
-storage_account_name = "devstorageac6301318095"
+storage_account_name = "preprodstorageac6301318095"
 
 app_service_name = "preprod-app-service630131"
 service_plan_name = "preprod_service_plan"
