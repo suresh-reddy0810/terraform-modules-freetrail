@@ -1,5 +1,7 @@
 variable "rg_name" {}
 variable "location" {}
+variable "rg_aks_name" {}
+variable "aks_location" {}
 
 variable "vnet_name" {}
 variable "vnet_cicdr" {}
@@ -8,6 +10,10 @@ variable "sub2_cicdr" {}
 variable "sub1_cicdr" {}
 variable "sub2_name" {}
 variable "nsg_name" {}
+variable "vnet1_name" {}
+variable "vnet1_cicdr" {}
+variable "sub_name" {}
+variable "sub_cicdr" {}
 
 variable "vm_name" {}
 variable "nic_name" {}
