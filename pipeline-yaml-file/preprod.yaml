@@ -6,7 +6,7 @@ pool:
 
 variables:
   serviceConnection: 'terraform_service_connection'
-  workingDirectory: 'environments/dev'
+  workingDirectory: 'environments/prepord'
 
 steps:
 
@@ -24,7 +24,7 @@ steps:
     backendAzureRmResourceGroupName: rg-terraform-state
     backendAzureRmStorageAccountName: statefilebackupaccounts
     backendAzureRmContainerName: tfstate
-    backendAzureRmKey: dev.tfstate
+    backendAzureRmKey: prepord.tfstate
 
 - task: TerraformTaskV4@4
   displayName: Terraform Plan
