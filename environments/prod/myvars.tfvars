@@ -18,7 +18,7 @@ sub_cicdr = ["10.1.1.0/24"]
 vm_name = "prod-vm1"
 nic_name = "prod_nic"
 
-storage_account_name = "devstorageac6301318095"
+storage_account_name = "prodstorageac6301318095"
 
 app_service_name = "prod-app-service630131"
 service_plan_name = "prod_service_plan"
